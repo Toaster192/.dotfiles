@@ -48,7 +48,7 @@ os.setlocale(os.getenv("LANG"))
 -- {{{ Initialize context
 config.context.init {
 
-    theme = "blackout",
+    theme = "blackout-no-sidebar",
 
     keys = {
 
@@ -75,9 +75,8 @@ config.context.init {
         randr            = "arandr ",
         terminal         = "kitty ",
         browser          = "chromium ",
-        email            = "thunderbird ",
         emoji            = "rofimoji -c ",
-        net_iface        = "wlp58s0",
+        net_iface        = "wlp2s0",
         ping_ip          = "8.8.8.8",
         cores            = 4,
         batteries        = { "BAT0" },
@@ -166,7 +165,7 @@ config.util_theme.init()
 config.keys.init()
 config.bindings_global.init()
 config.bindings_client.init()
-config.bindings_command.init()
+-- config.bindings_command.init()
 config.bindings_taglist.init()
 config.bindings_tasklist.init()
 -- }}}
@@ -180,7 +179,7 @@ beautiful.init(theme_path)
 -- {{{ Parts
 config.menu.init()
 config.popups.init()
-config.sidebar.init()
+-- config.sidebar.init()
 -- }}}
 
 -- {{{ Configs
@@ -196,14 +195,10 @@ config.screens.init()
 --     config.context.vars.scripts_dir .. "/autolock"
 -- }
 
--- util.spawn_once {
---     command = "kitty --class='kitty-main'",
---     class = "kitty-main",
---     tag = awful.screen.focused().tags[2],
---     callback = function(c)
---         c.maximized = true
---     end,
--- }
+awful.spawn("kitty --class='kitty-main'",{
+    tag = "1",
+    maximized = true,
+})
 
 -- util.spawn_once("subl", "Sublime_text", tags[1][2])
 -- util.spawn_once("chromium", "Chromium", tags[1][3])

@@ -26,7 +26,7 @@ function _config.init()
     -- Updates
     _config.pacman = yaawl.updates {
         command = "checkupdates | sed -E 's/->/→/;s/\\.g[^.-]+-/-/g' | sort | column -t -c 70 -T 2,4",
-        notify  = true,
+        notify  = false,
     }
     _config.pacman:add_timer {
         timeout = 911,
@@ -124,7 +124,7 @@ function _config.init()
 
     -- Temperature
     _config.temperature = yaawl.temperature {
-        path = "/sys/class/thermal/thermal_zone8/temp",
+        path = "/sys/class/thermal/thermal_zone0/temp",
     }
     _config.temperature:add_timer {
         timeout = 23,
@@ -163,28 +163,28 @@ function _config.init()
         timeout = 401,
     }
 
-    -- Weather
-    _config.weather = yaawl.weather {
-        APPID = file.first_line(table.concat { context.vars.secrets_dir, "/openweathermap" }),
-        query = "Zurich,CH",
-    }
-    _config.weather:add_timer {
-        timeout = 3607,
-    }
-    _config.weather.buttons = gears.table.join(
-        _config.weather.buttons,
-        awful.button({ context.keys.modkey }, 1, function()
-            awful.spawn(table.concat {
-                context.vars.terminal, "zsh -lic 'curl -s wttr.in | less'"
-            }, {
-                floating = true,
-                ontop = true,
-                width = 1136,
-                height = 797,
-                delayed_placement = awful.placement.centered,
-            })
-        end)
-    )
+    -- -- Weather
+    -- _config.weather = yaawl.weather {
+    --     APPID = file.first_line(table.concat { context.vars.secrets_dir, "/openweathermap" }),
+    --     query = "Zurich,CH",
+    -- }
+    -- _config.weather:add_timer {
+    --     timeout = 3607,
+    -- }
+    -- _config.weather.buttons = gears.table.join(
+    --     _config.weather.buttons,
+    --     awful.button({ context.keys.modkey }, 1, function()
+    --         awful.spawn(table.concat {
+    --             context.vars.terminal, "zsh -lic 'curl -s wttr.in | less'"
+    --         }, {
+    --             floating = true,
+    --             ontop = true,
+    --             width = 1136,
+    --             height = 797,
+    --             delayed_placement = awful.placement.centered,
+    --         })
+    --     end)
+    -- )
 
     -- Ping
     _config.ping = yaawl.ping {
@@ -325,7 +325,7 @@ function _config:update()
     self.temperature:update()
     self.drive:update()
     self.lock:update()
-    self.weather:update()
+    -- self.weather:update()
     self.ping:update()
 end
 
