@@ -155,13 +155,13 @@ function _config.init()
         end)
     )
 
-    -- Lock
-    _config.lock = yaawl.lock {
-        signals = false,
-    }
-    _config.lock:add_timer {
-        timeout = 401,
-    }
+    -- -- Lock
+    -- _config.lock = yaawl.lock {
+    --     signals = false,
+    -- }
+    -- _config.lock:add_timer {
+    --     timeout = 401,
+    -- }
 
     -- -- Weather
     -- _config.weather = yaawl.weather {
@@ -324,7 +324,7 @@ function _config:update()
     self.memory:update()
     self.temperature:update()
     self.drive:update()
-    self.lock:update()
+    -- self.lock:update()
     -- self.weather:update()
     self.ping:update()
 end
