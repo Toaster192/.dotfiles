@@ -27,6 +27,12 @@ export PATH="$JAVA_HOME/bin:$PATH"
 # user scripts
 export PATH="$HOME/.bin:$PATH"
 
+# Discurses, coverage etc.
+export PATH="$PATH:$HOME/.local/bin"
+
+# go
+export PATH="$HOME/go/bin:$PATH"
+
 # terminal emulator
 export TERMINAL='kitty'
 
