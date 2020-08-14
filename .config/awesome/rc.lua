@@ -165,7 +165,7 @@ config.util_theme.init()
 config.keys.init()
 config.bindings_global.init()
 config.bindings_client.init()
--- config.bindings_command.init()
+config.bindings_command.init()
 config.bindings_taglist.init()
 config.bindings_tasklist.init()
 -- }}}
@@ -191,13 +191,30 @@ config.screens.init()
 
 -- {{{ Spawn
 
--- awful.spawn {
---     config.context.vars.scripts_dir .. "/autolock"
--- }
+do
+  local cmds =
+  {
+    "redshift -c .config/redshift.conf",
+    "syndaemon -i 0.6 -K -R -d",
+    "compton --config ~/.config/compton.conf",
+  }
 
-awful.spawn("kitty --class='kitty-main'",{
-    tag = "1",
-    maximized = true,
+  for _,i in pairs(cmds) do
+    awful.spawn.with_shell(i)
+  end
+end
+
+awful.spawn("kitty --class='kitty-main'", {
+  tag       = "1",
+  maximized = true,
+})
+awful.spawn("chromium", {
+  tag       = "2",
+  maximized = true,
+})
+awful.spawn("discord", {
+  tag       = "3",
+  maximized = true,
 })
 
 -- util.spawn_once("subl", "Sublime_text", tags[1][2])
