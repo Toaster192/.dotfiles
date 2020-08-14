@@ -516,22 +516,22 @@ lain.widget.cal {
 --         theme.mpd.update()
 --     end)))
 
-brokers.mpd = lain.widget.mpd {
-    settings = function()
-        if mpd_now.state == "play" then
-            artist = " " .. mpd_now.artist .. " "
-            title = mpd_now.title .. " "
-            -- mpd_icon:set_image(theme.widget_music_on)
-            widget:set_markup(markup.font(theme.font, markup("#FF8466", artist) .. " " .. title))
-        elseif mpd_now.state == "pause" then
-            widget:set_markup(markup.font(theme.font, " mpd paused "))
-            -- mpd_icon:set_image(theme.widget_music_pause)
-        else
-            widget:set_text("")
-            -- mpd_icon:set_image(theme.widget_music)
-        end
-    end,
-}
+-- brokers.mpd = lain.widget.mpd {
+--     settings = function()
+--         if mpd_now.state == "play" then
+--             artist = " " .. mpd_now.artist .. " "
+--             title = mpd_now.title .. " "
+--             -- mpd_icon:set_image(theme.widget_music_on)
+--             widget:set_markup(markup.font(theme.font, markup("#FF8466", artist) .. " " .. title))
+--         elseif mpd_now.state == "pause" then
+--             widget:set_markup(markup.font(theme.font, " mpd paused "))
+--             -- mpd_icon:set_image(theme.widget_music_pause)
+--         else
+--             widget:set_text("")
+--             -- mpd_icon:set_image(theme.widget_music)
+--         end
+--     end,
+-- }
 --luacheck: pop
 -- }}}
 
