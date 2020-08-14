@@ -174,7 +174,7 @@ function echo_blank() {
     echo
 }
 precmd_functions+=echo_blank
-preexec_functions+=echo_blank
+# preexec_functions+=echo_blank
 
 # Directly source prompt
 #source "$ZSH_CUSTOM/themes/gruvbox-dark.zsh-theme"
@@ -183,6 +183,12 @@ preexec_functions+=echo_blank
 source <(kitty + complete setup zsh)
 
 ##########################################################################################
+
+## bonsai
+if [ $(tput lines) -gt 40 ] && [ $(tput cols) -gt 200 ]; then
+    cbonsai -p
+fi
+
 
 # Debug
 #zprof
