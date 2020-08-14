@@ -13,12 +13,30 @@ alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias .......='cd ../../../../../..'
 alias ........='cd ../../../../../../..'
+alias cd..='cd ..'
 
-# ls variants
-alias l='ls -FAh'
-alias la='ls -lAFh'
-alias lt='ls -lFAht'
-alias lr='ls -RFAh'
+alias fucking='sudo'
+alias please='sudo $( history -p !! )'
+eval $(thefuck --alias)
+
+alias supac='sudo pacman'
+
+alias gotop='TERM=xterm-color gotop'
+alias ssh='TERM=xterm-color ssh'
+alias eva='TERM=xterm-color ssh eva.fit.vutbr.cz'
+alias merlin='TERM=xterm-color ssh merlin.fit.vutbr.cz'
+
+alias cb='cd -'
+alias cl='clear'
+
+# show type,show almost all
+alias la='ls -FA'
+# long list,size,show type,human readable
+alias l='ls -lFh'
+# sorted by date,recursive,show type,human readable
+alias lr='ls -tRFh'
+# long list,sorted by date,show type,human readable
+alias lt='ls -ltFh'
 
 # more ls variants
 alias ldot='ls -ld .*'
@@ -26,9 +44,9 @@ alias lS='ls -1FASsh'
 alias lart='ls -1Fcart'
 alias lrt='ls -1Fcrt'
 
-# ls with different alphabethical sorting
+# long list,show almost all,show type,human readable
 unalias ll
-ll() { LC_COLLATE=C ls "$@" }
+ll() { LC_COLLATE=C ls -lAFh "$@" }
 
 # suffix aliases
 alias -g CP='| xclip -selection clipboard -rmlastnl'
@@ -85,6 +103,7 @@ compress() {
             *.tgz ) tar czf "$file" "$*" ;;
             *.zip ) zip "$file" "$*" ;;
             *.rar ) rar "$file" "$*" ;;
+            *.7z ) 7z a "$file" "$*" ;;
             * ) tar zcvf "$file.tar.gz" "$*" ;;
         esac
     else
