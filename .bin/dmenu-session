@@ -9,7 +9,7 @@ choice_by_dmenu() {
     fi
 
     choice=$(
-    echo -e "0: Lock\\n1: Hibernate\\n2: Suspend\\n3: Logout\\n4: Reboot\\n5: Poweroff" \
+    echo -e "0: Lock\\n1: Suspend\\n2: Logout\\n3: Reboot\\n4: Poweroff" \
         | $DMENU | cut -d ':' -f 1
     )
 }
@@ -22,10 +22,9 @@ sleep 0.1
 [[ -z "$choice" ]] && exit 1
 
 case "$choice" in
-    0) xautolock -locknow & ;;
-    1) systemctl hibernate & ;;
-    2) systemctl suspend & ;;
-    3) systemctl kill "$(pgrep X)" & ;;
-    4) systemctl reboot & ;;
-    5) systemctl poweroff & ;;
+    0) ~/.bin/lock & ;;
+    1) systemctl suspend & ;;
+    2) systemctl kill "$(pgrep X)" & ;;
+    3) systemctl reboot & ;;
+    4) systemctl poweroff & ;;
 esac
