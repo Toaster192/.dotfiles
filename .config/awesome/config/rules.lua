@@ -85,28 +85,28 @@ function _config.init()
 
         {
             rule = {
-                class = "Gimp-2.10",
+                class = "discord",
             },
             properties = {
-                tag    = tags.names[7],
+                tag    = tags.names[3],
             },
         },
 
         {
             rule = {
-                class = "VirtualBox",
+                class = "Discord",
             },
             properties = {
-                tag    = tags.names[8],
+                tag    = tags.names[3],
             },
         },
 
         {
             rule = {
-                class = "Thunderbird",
+                class = "chromium",
             },
             properties = {
-                tag    = tags.names[9],
+                tag    = tags.names[2],
             },
         },
 
