@@ -23,7 +23,7 @@ done
 shift $((OPTIND - 1))
 OPTIND=1
 
-ip_address=$(ip address show wlp58s0 | grep -Po 'inet \K[\d.]+')
+ip_address=$(ip address show wlp2s0 | grep -Po 'inet \K[\d.]+')
 if ((full)); then
     echo "SSID:     $(iwgetid -r)"
     echo "Internal: $(head -n 1 <<< "$ip_address")"
