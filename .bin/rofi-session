@@ -3,19 +3,14 @@
 choice_by_rofi() {
     output=(
         '0: Lock'
-        '1: Hibernate'
-        '2: Suspend'
-        '3: Logout'
-        '4: Reboot'
-        '5: Poweroff'
-        '6: Disable Screensaver'
-        '7: Enable Screensaver'
-        '8: Disable Autolock'
-        '9: Enable Autolock'
+        '1: Suspend'
+        '2: Logout'
+        '3: Reboot'
+        '4: Poweroff'
     )
 
     choice=$(printf '%s\n' "${output[@]}" \
-        | rofi -i -lines 6 -dmenu -p 'session' \
+        | rofi -i -lines 5 -dmenu -p 'session' \
         | cut -d ':' -f 1)
 }
 
@@ -26,14 +21,9 @@ choice_by_rofi
 [[ -z "$choice" ]] && exit 1
 
 case "$choice" in
-    0) xautolock -locknow & ;;
-    1) systemctl hibernate & ;;
-    2) systemctl suspend & ;;
-    3) systemctl kill "$(pgrep X)" & ;;
-    4) systemctl reboot & ;;
-    5) systemctl poweroff & ;;
-    6) xset s off & ;;
-    7) xset s on & ;;
-    8) xautolock -disable & ;;
-    9) xautolock -enable & ;;
+    0) ~/.bin/lock & ;;
+    1) systemctl suspend & ;;
+    2) systemctl kill "$(pgrep X)" & ;;
+    3) systemctl reboot & ;;
+    4) systemctl poweroff & ;;
 esac
